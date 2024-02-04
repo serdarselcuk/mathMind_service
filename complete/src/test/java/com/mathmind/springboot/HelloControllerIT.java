@@ -1,4 +1,4 @@
-package com.example.springboot;
+package com.mathmind.springboot;
 
 import org.junit.jupiter.api.Test;
 
