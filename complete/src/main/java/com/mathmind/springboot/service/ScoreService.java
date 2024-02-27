@@ -11,6 +11,6 @@ public interface ScoreService {
 
      ArrayList<Scoreboard> getScoreBoardForUser();
 
-     ArrayList<Scoreboard> getTopScoreList();
+     String getTopScoreList();
 
 }

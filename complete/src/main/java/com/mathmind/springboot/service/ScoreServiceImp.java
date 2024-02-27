@@ -24,7 +24,7 @@ public class ScoreServiceImp implements ScoreService {
     }
 
     @Override
-    public ArrayList<Scoreboard> getTopScoreList() {
-        return null;
+    public String getTopScoreList() {
+        return "hi";
     }
 }
