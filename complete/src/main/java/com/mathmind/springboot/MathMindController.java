@@ -42,14 +42,8 @@ public class MathMindController {
 	}
 
 	@PostMapping("/user/save")
-	public User saveUser(){
-		User user = new User();
-		user.setUserName("test_1");
-		user.setFirstName("firstName");
-		user.setSavedDate(new Date(System.currentTimeMillis()));
-		user.setSecondName("secondName");
-		return userService.saveUser(user);
-//		return userService.saveUser(param_1)!=null;
+	public String saveUser(@RequestBody User user){
+		return userService.saveUser(user).getPerson_id()+"";
 	}
 
 

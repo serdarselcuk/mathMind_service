@@ -8,7 +8,7 @@ public interface UserService {
 
      User getUser(String username);
 
-     User deleteUser(String username);
+     void deleteUser(String username);
 
      boolean validateUser(String userName);
 

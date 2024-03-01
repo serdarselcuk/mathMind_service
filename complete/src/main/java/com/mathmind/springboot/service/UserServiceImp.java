@@ -1,13 +1,12 @@
 package com.mathmind.springboot.service;
 
-import com.mathmind.springboot.dao.Scoreboard;
 import com.mathmind.springboot.dao.User;
-import com.mathmind.springboot.repository.ScoreRepository;
 import com.mathmind.springboot.repository.UserRepository;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.Optional;
 
 @Service
 public class UserServiceImp implements UserService {
@@ -22,7 +21,7 @@ public class UserServiceImp implements UserService {
 
     @Override
     public User getUser(String username) {
-        return null;
+        return  userRepo.findById(username).orElse(null);
     }
 
     @Override
@@ -31,8 +30,8 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public User deleteUser(String username) {
-        return null;
+    public void deleteUser(@NonNull String username) {
+        userRepo.deleteById(username);
     }
 
 }
