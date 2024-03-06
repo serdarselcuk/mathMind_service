@@ -1,7 +1,10 @@
 package com.mathmind.springboot.dao;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.mathmind.springboot.service.AuthService;
+import com.mathmind.springboot.service.impl.AuthServiceImp;
 import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
 import lombok.*;
 
 import java.sql.Date;
@@ -16,10 +19,13 @@ import java.time.LocalDate;
 @EqualsAndHashCode
 public class User {
 
+
+
     @Column
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int person_id;
-    @Id
+
     @Column
     private String userName;
 
@@ -32,7 +38,6 @@ public class User {
     private String secondName;
     @Column
     private  String email;
-
 
 //    @Bean
 //    @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)

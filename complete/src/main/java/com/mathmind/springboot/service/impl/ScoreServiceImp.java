@@ -1,7 +1,8 @@
-package com.mathmind.springboot.service;
+package com.mathmind.springboot.service.impl;
 
 import com.mathmind.springboot.dao.Scoreboard;
 import com.mathmind.springboot.repository.ScoreRepository;
+import com.mathmind.springboot.service.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,18 +1,18 @@
 package com.mathmind.springboot;
 
-//import com.mathmind.springboot.repository.ScoreRepository;
-//import com.mathmind.springboot.service.ScoreRepositoryImp;
-import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.mathmind.springboot.dao.Password;
 import com.mathmind.springboot.dao.Scoreboard;
 import com.mathmind.springboot.dao.User;
-import com.mathmind.springboot.service.ScoreServiceImp;
-import com.mathmind.springboot.service.UserServiceImp;
+import com.mathmind.springboot.dao.UserModel;
+import com.mathmind.springboot.service.impl.AuthServiceImp;
+import com.mathmind.springboot.service.impl.ScoreServiceImp;
+import com.mathmind.springboot.service.impl.UserServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
-import java.util.ArrayList;
 
 @RestController
 public class MathMindController {
@@ -20,11 +20,8 @@ public class MathMindController {
 	ScoreServiceImp scoreRepository;
 	@Autowired
 	UserServiceImp userService;
-
-	@GetMapping("/")
-	public String index() {
-		return "Greetings from Spring Boot!";
-	}
+	@Autowired
+	AuthServiceImp authService;
 
 	@GetMapping("/score")
 	public Scoreboard score(){
@@ -42,8 +39,14 @@ public class MathMindController {
 	}
 
 	@PostMapping("/user/save")
-	public String saveUser(@RequestBody User user){
-		return userService.saveUser(user).getPerson_id()+"";
+	public ResponseEntity<String> saveUser(@RequestBody UserModel userModel){
+		try {
+			userService.saveUser(userModel);
+			return ResponseEntity.ok("success");
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+					.body(e.getLocalizedMessage());
+		}
 	}
 
 

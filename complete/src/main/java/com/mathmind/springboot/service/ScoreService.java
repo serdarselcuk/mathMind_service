@@ -9,8 +9,8 @@ public interface ScoreService {
 
     Scoreboard saveScore(Scoreboard score);
 
-     ArrayList<Scoreboard> getScoreBoardForUser();
+    ArrayList<Scoreboard> getScoreBoardForUser();
 
-     String getTopScoreList();
+    String getTopScoreList();
 
 }
