@@ -58,8 +58,6 @@ public class MathMindController {
 					.body(e.getLocalizedMessage());
 		}
 	}
-	GET "/user?userName=use_2", parameters={masked}
-	GET "/user?param_1=use_2", parameters={masked}
 
 
 }
