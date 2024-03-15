@@ -45,5 +45,15 @@ public class User {
 //        return new Score();
 //    }
 
+    public User mapToUserEntity(UserModel userModel) {
+
+        this.setUserName(userModel.getUserName());
+        this.setSavedDate(LocalDate.parse(userModel.getSavedDate()));
+        this.setFirstName(userModel.getFirstName());
+        this.setSecondName(userModel.getSecondName());
+        this.setEmail(userModel.getEmail());
+        return this;
+    }
+
 }
 

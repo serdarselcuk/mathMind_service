@@ -21,4 +21,13 @@ public class Password {
     @Id
     @Column (name = "person_id")
     int person_id;
+
+
+    public Password mapToPasswordEntity(Integer personId, UserModel userModel) {
+        this.setPerson_id(personId);
+        this.setHashKey(userModel.getHashCode());
+        this.setHashedPassword(userModel.getPassword());
+        return this;
+    }
+
 }

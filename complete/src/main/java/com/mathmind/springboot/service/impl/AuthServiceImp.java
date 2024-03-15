@@ -13,11 +13,12 @@ public class AuthServiceImp implements AuthService {
     AuthRepository authRepo;
 
     @Override
-    public String savePassword(Password password) {
-        try{
-            return "saved" + authRepo.save(password).getPerson_id();
-        }catch ( Exception e){
-            return e.getLocalizedMessage();
-        }
+    public Password savePassword(Password password) {
+        return authRepo.save(password);
+    }
+
+    @Override
+    public Password getPassword(int id) {
+        return authRepo.findById(id).orElse(null);
     }
 }
