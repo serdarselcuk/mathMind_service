@@ -1,6 +1,5 @@
 package com.mathmind.springboot;
 
-import com.mathmind.springboot.dao.Password;
 import com.mathmind.springboot.dao.Scoreboard;
 import com.mathmind.springboot.dao.User;
 import com.mathmind.springboot.dao.UserModel;
@@ -49,6 +48,18 @@ public class MathMindController {
 		}
 	}
 
+	@GetMapping("/user")
+	public ResponseEntity<String> getUser(@RequestParam("param_1") String param_1){
+		try {
+			User user = userService.getUser(param_1);
+			return ResponseEntity.ok(user.toString());
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+					.body(e.getLocalizedMessage());
+		}
+	}
+	GET "/user?userName=use_2", parameters={masked}
+	GET "/user?param_1=use_2", parameters={masked}
 
 
 }
